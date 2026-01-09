@@ -1,8 +1,8 @@
 # LastAck
 
-![Status](https://img.shields.io/badge/status-alpha-orange)
+![Status](https://img.shields.io/badge/status-inprogress-yellow)
+![Docker](https://img.shields.io/badge/docker-inprogress-yellow)
 ![License](https://img.shields.io/badge/license-MIT-blue)
-![Docker](https://img.shields.io/badge/docker-ready-green)
 
 **LastAck** is a self-hosted, digital dead man's switch.
 
