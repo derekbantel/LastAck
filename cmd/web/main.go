@@ -2,31 +2,16 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
+
+	"github.com/derekbantel/LastAck/pkgs"
 )
 
-func home(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("./cmd/web/templates/index.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	err = tmpl.Execute(w, nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
 func main() {
-	mux := http.NewServeMux()
-	fs := http.FileServer(http.Dir("./cmd/web/static"))
-	mux.Handle("/static/", http.StripPrefix("/static/", fs))
-	mux.HandleFunc("/", home)
+	router := pkgs.NewRouter()
 	server := &http.Server{
 		Addr:    ":8080",
-		Handler: mux,
+		Handler: router.Routes(),
 	}
 	fmt.Println("Server started on port 8080")
 	err := server.ListenAndServe()

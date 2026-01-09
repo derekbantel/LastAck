@@ -3,7 +3,9 @@
 @source not "./tailwindcss";
 @source not "./daisyui{,*}.mjs";
 
-@plugin "./daisyui.mjs";
+@plugin "./daisyui.mjs" {
+    themes: forest --default;
+}
 
 @plugin "./daisyui-theme.mjs" {
 }
